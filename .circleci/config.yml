@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/python:2.7-jessie
+    steps:
+      - checkout        
+      - run:
+          name: Update apt-get
+          command: sudo apt-get update
+      - run:
+          name: install wget
+          command: 'sudo apt-get install wget zip unzip'
+      - run:
+          name: aws cli
+          command: sudo pip install awscli
+      - run:
+          name: Zip Artifact
+          command: |
+            zip index.js lambda.zip
+            ls -la
+      - run:
+          name: Upload Artifact to S3
+          command: |
+            aws s3 cp lambda.zip s3://${S3_BUCKET_ADDR}/lambda.zip
+      - run:
+          name: Make Lambda function update call
+          command: |
+            aws lambda update-function-code --function-name BillDueService --region us-east-1 --zip-file fileb://lambda.zip

@@ -1,0 +1,22 @@
+{
+  "name": "serverless",
+  "version": "1.0.0",
+  "description": "Follow below steps in order to start the application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/floyedpinto/serverless.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/floyedpinto/serverless/issues"
+  },
+  "homepage": "https://github.com/floyedpinto/serverless#readme",
+  "dependencies": {
+    "aws-sdk": "^2.627.0"
+  }
+}
