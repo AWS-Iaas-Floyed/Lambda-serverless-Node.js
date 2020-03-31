@@ -18,6 +18,7 @@ jobs:
           name: Zip Artifact
           command: |
             zip index.js lambda.zip
+            zip -r lambda.zip index.js node_modules package.json
             ls -la
       - run:
           name: Upload Artifact to S3
@@ -27,3 +28,8 @@ jobs:
           name: Make Lambda function update call
           command: |
             aws lambda update-function-code --function-name BillDueService --region us-east-1 --zip-file fileb://lambda.zip
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+    - deploy            

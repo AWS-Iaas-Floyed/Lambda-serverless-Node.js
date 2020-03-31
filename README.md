@@ -1,6 +1,6 @@
-# User login bases REST API Server
+# Email sending AWS Lambda function
 
-Follow below steps in order to start the application.
+The file index.js contains the code that will be deployed on AWS Lambda
 
 ## Install npm packages
 
@@ -8,24 +8,10 @@ Follow below steps in order to start the application.
 npm i` or `npm install
 ```
 
-## Run application server
+## To run the Lambda function
+
+Zip the file index.js and run the following command
 
 ```
-npm start
+aws lambda update-function-code --function-name BillDueService --region us-east-1 --zip-file fileb://lambda.zip
 ```
- 
- or 
- 
-```
-npm run start
-```
-
-## Test the application
-
-```
-npm test
-```
-
-Port number will be based on the environment variable : EXPRESS_PORT or 3000 by default
-
-You can access the app at [http://localhost:3000/](http://localhost:3000/).
