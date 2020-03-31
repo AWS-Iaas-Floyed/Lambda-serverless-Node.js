@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Zip Artifact
           command: |
-            zip index.js lambda.zip
+            zip lambda.zip index.js
             ls -la
       - run:
           name: Upload Artifact to S3
