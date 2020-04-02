@@ -16,13 +16,11 @@ exports.billDueService = function (event, context, callback) {
     let email = messageDataJson.Email;
     let link = messageDataJson.link;
 
-    link = link.replace('undefined', 'prod.floyed-pinto.me');
-
     console.log("Email for :: " + email);
     console.log("Link to send :: " + link);
 
     let currentTime = new Date().getTime();
-    let ttl = 15 * 60 * 1000;
+    let ttl = 60 * 60 * 1000;
     let expirationTime = (currentTime + ttl).toString();
 
     var emailParams = {
@@ -43,7 +41,7 @@ exports.billDueService = function (event, context, callback) {
                 Data: "Bills due"
             }
         },
-        Source: "floyedpinto08@" + process.env.DOMAIN_NAME
+        Source: "duebills@" + process.env.DOMAIN_NAME
     };
     let putParams = {
         TableName: "emailrequest",
