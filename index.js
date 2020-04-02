@@ -83,7 +83,7 @@ exports.billDueService = function (event, context, callback) {
 
                         console.log('Email sent for first time!');
 
-                        ses.sendEmail(emailParams)
+                        ses.sendEmail(emailParams).promise()
                             .then(function (data) {
                                 console.log(data.MessageId);
                             })
@@ -113,7 +113,7 @@ exports.billDueService = function (event, context, callback) {
                             console.log(data);
                             console.log('Updating last sent timestamp');
 
-                            ses.sendEmail(emailParams)
+                            ses.sendEmail(emailParams).promise()
                                 .then(function (data) {
                                     console.log(data.MessageId);
                                 })
